@@ -1,3 +1,5 @@
 #!/usr/bin/python3
-number = 98
-print(f"{number:d} Battery street")
+a = 89
+b = 10
+a, b = b, a
+print("a={:d} - b={:d}".format(a, b))
