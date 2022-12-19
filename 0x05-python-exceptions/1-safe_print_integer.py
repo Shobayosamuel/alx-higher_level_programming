@@ -10,6 +10,6 @@ def safe_print_integer(value):
             return False
 
 
-    except ValueError:
+    except:
         print("{:d}".format(value))
         return True
