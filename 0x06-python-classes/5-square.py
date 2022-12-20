@@ -33,7 +33,7 @@ class Square:
         """Print # area number of times
         """
         if self.__size == 0:
-            print("\n")
+            print("")
         else:
             for x in range(self.__size):
                 for y in range(self.__size):
