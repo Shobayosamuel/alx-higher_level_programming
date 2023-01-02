@@ -1,0 +1,78 @@
+=============================
+How to use 2-matrix_divided.py
+==============================
+This module defines a matrix division function matrix_divided(matrix, div).
+
+Usage:
+======
+``matrix_divided(...)``: This returns a new matrix, which is the former matrix divided by div.
+The quotients will be rounded to 2d.p
+::
+
+    matrix_divided = __import__('2-matrix_divided').matrix_divided
+    >>> matrix = [[3, 6, 9], [12, 15, 18]]
+    >>> print(matrix_divided(matrix, 3))
+    [[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]
+
+Integers and floats combined.
+::
+
+    >>> matrix = [[2, 5, 3], [22, 3.4, 18]]
+    >>> print(matrix_divided(matrix, 3))
+    [[0.67, 1.67, 1.0], [7.33, 1.13, 6.0]]
+
+One row longer than the other.
+::
+    >>> matrix = [[2, 5, 3, 3], [22, 3.4, 18]]
+    >>> print(matrix_divided(matrix, 3))
+    Traceback (most recent call last):
+    TypeError: Each row of the matrix must have the same size
+
+
+::
+    >>> matrix = [[2, 5, 3, 3], [22, 3.4, 18, 0]]
+    >>> print(matrix_divided(matrix, 3))
+    [[0.67, 1.67, 1.0, 1.0], [7.33, 1.13, 6.0, 0.0]]
+
+Dividing by zero
+::
+    >>> print(matrix_divided(matrix, 0))
+    Traceback (most recent call last):
+    ZeroDivisionError: division by zero
+
+
+Adding a string to the matrix.
+::
+    >>> matrix = [[2, 5, 3, "3"], [22, 3.4, 18, 0]]
+    >>> print(matrix_divided(matrix, 3))
+    Traceback (most recent call last):
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+
+Dividing by a string.
+::
+    >>> print(matrix_divided(matrix, 3))
+    [[0.67, 1.67, 1.0, 1.0], [7.33, 1.13, 6.12, 0.0]]
+    >>> print(matrix_divided(matrix, "12"))
+    Traceback (most recent call last):
+    TypeError: div must be a number
+
+Dividing an empty matrix
+::
+    >>> matrix = [[]]
+    >>> print(matrix_divided(matrix, 3))
+    [[]]
+
+Dividing an empty matrix.
+::
+    >>> matrix = []
+    >>> print(matrix_divided(matrix, 3))
+    Traceback (most recent call last):
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+A one dimensional array
+::
+    >>> matrix = [2, 45, 32]
+    >>> print(matrix_divided(matrix, 3))
+    Traceback (most recent call last):
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
