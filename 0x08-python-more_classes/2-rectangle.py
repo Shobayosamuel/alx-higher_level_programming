@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """Defines a Rectangle class."""
 
 
@@ -38,23 +39,15 @@ class Rectangle:
         if value < 0:
             raise ValueError("height must be >= 0")
         self.__height = value
-        
+
     def area(self):
+        """Return the area of the rectangle"""
         return (self.__width * self.__height)
-    
+
     def perimeter(self):
+        """Return the perimeter of the rectangle"""
         if (self.__width == 0) or (self.__height == 0):
             perimeter = 0
         else:
             perimeter = 2 * ((self.__width) + (self.__height))
         return (perimeter)
-    
-    
-my_rectangle = Rectangle(2, 4)
-print("Area: {} - Perimeter: {}".format(my_rectangle.area(), my_rectangle.perimeter()))
-
-print("--")
-
-my_rectangle.width = 10
-my_rectangle.height = 3
-print("Area: {} - Perimeter: {}".format(my_rectangle.area(), my_rectangle.perimeter()))
