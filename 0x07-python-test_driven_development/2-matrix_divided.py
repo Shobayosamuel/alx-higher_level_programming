@@ -1,5 +1,23 @@
 #!/usr/bin/python3
+"""Divide the matrix"""
+
+
 def matrix_divided(matrix, div):
+    """DIvide the matrix
+
+    Args:
+        matrix (list): must be a list
+        div (int): number to divide the matrix
+
+    Raises:
+        TypeError: should be raised if the correct type is not inserted
+        TypeError: should be raised if the correct type is not inserted
+        TypeError: should be raised if the correct type is not inserted
+        ZeroDivisionError: is raised if div is 0
+
+    Returns:
+        list: new list after division
+    """
     length = 0
     width = 0
     len_mat = len(matrix)
