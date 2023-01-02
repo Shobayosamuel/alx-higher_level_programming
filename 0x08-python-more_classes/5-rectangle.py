@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """Defines a Rectangle class."""
 
 
@@ -66,5 +67,7 @@ class Rectangle:
         rect = "Rectangle(" + str(self.__width)
         rect += ", " + str(self.__height) + ")"
         return (rect)
+
     def __del__(self):
+        """Delete the instance"""
         print("Bye rectangle...")
