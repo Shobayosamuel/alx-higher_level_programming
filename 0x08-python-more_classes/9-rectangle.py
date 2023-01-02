@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """Defines a Rectangle class."""
 
 
@@ -116,7 +117,3 @@ class Rectangle:
             Rectangle: with width and height = size
         """
         return (cls(size, size))
-
-my_square = Rectangle.square(5)
-print("Area: {} - Perimeter: {}".format(my_square.area(), my_square.perimeter()))
-print(my_square)
