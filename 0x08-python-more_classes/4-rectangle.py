@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 """Defines a Rectangle class."""
 
 
@@ -38,11 +40,13 @@ class Rectangle:
         if value < 0:
             raise ValueError("height must be >= 0")
         self.__height = value
-        
+
     def area(self):
+        """return the area of the rectangle"""
         return (self.__width * self.__height)
-    
+
     def perimeter(self):
+        """return the perimeter of the rectangle"""
         if (self.__width == 0) or (self.__height == 0):
             perimeter = 0
         else:
@@ -50,39 +54,17 @@ class Rectangle:
         return (perimeter)
 
     def __str__(self):
+        """return a string for the rectangle"""
         ret = []
         if (self.__height == 0) or (self.__width == 0):
             return ("")
         for i in range(self.__height):
-            [ret.append("#") for x in range(self.__width)]
+            [ret.append("#") for j in range(self.__width)]
             if i != self.__height - 1:
-                ret.append("\n")
+                ret.append('\n')
         return ("".join(ret))
+
     def __repr__(self):
-        rect = "Rectangle(" + str(self.__width) + ", " + str(self.__height) + ")"
+        rect = "Rectangle(" + str(self.__width)
+        rect += ", " + str(self.__height) + ")"
         return (rect)
-    
-    
-my_rectangle = Rectangle(2, 4)
-print(str(my_rectangle))
-print("--")
-print(my_rectangle)
-print("--")
-print(repr(my_rectangle))
-print("--")
-print(hex(id(my_rectangle)))
-print("--")
-
-# create new instance based on representation
-new_rectangle = eval(repr(my_rectangle))
-print(str(new_rectangle))
-print("--")
-print(new_rectangle)
-print("--")
-print(repr(new_rectangle))
-print("--")
-print(hex(id(new_rectangle)))
-print("--")
-
-print(new_rectangle is my_rectangle)
-print(type(new_rectangle) is type(my_rectangle))
