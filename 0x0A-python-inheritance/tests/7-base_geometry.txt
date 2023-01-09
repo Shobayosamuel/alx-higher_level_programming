@@ -1,0 +1,70 @@
+=========================
+How to use BaseGeometry
+=========================
+
+This class defines a function `BaseGeometry` has a module named `integer_validator` That checks an integer`
+
+::
+    >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+    >>> bg = BaseGeometry()
+
+===================
+Validate an integer
+===================
+::
+    >>> bg.integer_validator("my_int", 12)
+    >>> bg.integer_validator("width", 89)
+
+=============================================
+pass a string to get Validated, throw an error
+==============================================
+::
+    >>> bg.integer_validator("name", "John")
+    Traceback (most recent call last):
+    ...
+    TypeError: name must be an integer
+
+============================
+pass in an integer that is 0
+============================
+::
+    >>> bg.integer_validator("age", 0)
+    Traceback (most recent call last):
+    ...
+    ValueError: age must be greater than 0
+
+===========================================
+pass in a negative integer to throw an error
+===========================================
+::
+    >>> bg.integer_validator("distance", -4)
+    Traceback (most recent call last):
+    ...
+    ValueError: distance must be greater than 0
+
+==========================
+pass in too many arguments
+==========================
+::
+    >>> bg.integer_validator("distance", 4, 33, 3)
+    Traceback (most recent call last):
+    ...
+    TypeError: integer_validator() takes 3 positional arguments but 5 were given
+
+=====================
+pass in less argument
+=====================
+::
+    >>> bg.integer_validator("distance")
+    Traceback (most recent call last):
+    ...
+    TypeError: integer_validator() missing 1 required positional argument: 'value'
+
+====================
+pass in no arguments
+====================
+::
+    >>> bg.integer_validator()
+    Traceback (most recent call last):
+    ...
+    TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'  
