@@ -101,18 +101,28 @@ class Rectangle(Base):
                 print("#", end="")
             print("")
 
+    def update(self, *args):
+        if args and len(args) != 0:
+            i = 0
+            for arg in args:
+                if i == 0:
+                    if arg == None:
+                        self.__init__(self.width, self.height, self.x, self.y)
+                    else:
+                        self.id = arg
+                elif i == 1:
+                    self.width = arg
+                elif i == 2:
+                    self.height = arg
+                elif i == 3:
+                    self.x = arg
+                elif i == 4:
+                    self.y = arg
+                i += 1
+
     def __str__(self):
         """Return the print() and str() representation of the Rectangle."""
         return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id,
                                                        self.x, self.y,
                                                        self.width, self.height)
 
-if __name__ == "__main__":
-
-    r1 = Rectangle(2, 3, 2, 2)
-    r1.display()
-
-    print("---")
-
-    r2 = Rectangle(3, 2, 1, 0)
-    r2.display()
