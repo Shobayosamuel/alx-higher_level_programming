@@ -101,7 +101,7 @@ class Rectangle(Base):
                 print("#", end="")
             print("")
 
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         if args and len(args) != 0:
             i = 0
             for arg in args:
@@ -119,10 +119,26 @@ class Rectangle(Base):
                 elif i == 4:
                     self.y = arg
                 i += 1
+        elif not args:
+            if kwargs is not None:
+                i = 0
+                for key, value in kwargs.items():
+                    if key == "id":
+                        if value is not None:
+                            self.__init__(self.width, self.height, self.x, self.y)
+                        else:
+                            self.id = value
+                    elif key == "width":
+                        self.width = value
+                    elif key == "height":
+                        self.height = value
+                    elif self.height == "x":
+                        self.x = value
+                    elif key == "y":
+                        self.y = value
 
     def __str__(self):
         """Return the print() and str() representation of the Rectangle."""
         return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id,
                                                        self.x, self.y,
                                                        self.width, self.height)
-
