@@ -91,17 +91,28 @@ class Rectangle(Base):
 
     def display(self):
         """Display the the rectangle"""
-        for x in range(self.__height):
-            for y in range(self.__width):
+        if self.width == 0 or self.height == 0:
+            print("")
+            return
+        [print("") for y in range(self.y)]
+        for x in range(self.height):
+            [print(" ", end="") for i in range(self.x)]
+            for y in range(self.width):
                 print("#", end="")
             print("")
+
     def __str__(self):
-        return ("[Rectangle] ({}) {}/{} - {}/{}".format(self.id, self.__x, self.__y, self.__width, self.__height))
+        """Return the print() and str() representation of the Rectangle."""
+        return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id,
+                                                       self.x, self.y,
+                                                       self.width, self.height)
 
 if __name__ == "__main__":
 
-    r1 = Rectangle(4, 6, 2, 1, 12)
-    print(r1)
+    r1 = Rectangle(2, 3, 2, 2)
+    r1.display()
 
-    r2 = Rectangle(5, 5, 1)
-    print(r2)
+    print("---")
+
+    r2 = Rectangle(3, 2, 1, 0)
+    r2.display()
