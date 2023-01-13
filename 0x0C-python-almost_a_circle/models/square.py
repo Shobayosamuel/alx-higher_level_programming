@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-from rectangle import Rectangle
+from models.rectangle import Rectangle
 
 
 class Square(Rectangle):
@@ -66,7 +66,7 @@ class Square(Rectangle):
             "id": self.id,
             "size": self.size,
             "x": self.x,
-            "y":self.y
+            "y": self.y
         })
 
     def __str__(self):
