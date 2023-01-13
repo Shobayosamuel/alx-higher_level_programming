@@ -31,57 +31,36 @@ class Square(Rectangle):
             **kwargs (dict): New key/value pairs of attributes.
         """
         if args and len(args) != 0:
-            i = 0
+            a = 0
             for arg in args:
-                if i == 0:
-                    if arg == None:
+                if a == 0:
+                    if arg is None:
                         self.__init__(self.size, self.x, self.y)
                     else:
                         self.id = arg
-                elif i == 1:
+                elif a == 1:
                     self.size = arg
-                elif i == 3:
+                elif a == 2:
                     self.x = arg
-                elif i == 4:
+                elif a == 3:
                     self.y = arg
-                i += 1
-        elif not args:
-            if kwargs is not None:
-                i = 0
-                for key, value in kwargs.items():
-                    if key == "id":
-                        if value is not None:
-                            self.__init__(self.size, self.x, self.y)
-                        else:
-                            self.id = value
-                    elif key == "size":
-                        self.width = value
-                    elif self.height == "x":
-                        self.x = value
-                    elif key == "y":
-                        self.y = value
+                a += 1
+
+        elif kwargs and len(kwargs) != 0:
+            for key, value in kwargs.items():
+                if key == "id":
+                    if value is None:
+                        self.__init__(self.size, self.x, self.y)
+                    else:
+                        self.id = value
+                elif key == "size":
+                    self.size = value
+                elif key == "x":
+                    self.x = value
+                elif key == "y":
+                    self.y = value
+
     def __str__(self):
         """Return the print() and str() representation of the Square."""
         return "[Square] ({}) {}/{} - {}".format(self.id,
-                                                       self.x, self.y,
-                                                       self.width)
-if __name__ == "__main__":
-
-    s1 = Square(5)
-    print(s1)
-    print(s1.area())
-    s1.display()
-
-    print("---")
-
-    s2 = Square(2, 2)
-    print(s2)
-    print(s2.area())
-    s2.display()
-
-    print("---")
-
-    s3 = Square(3, 1, 3)
-    print(s3)
-    print(s3.area())
-    s3.display()
+                                                 self.x, self.y, self.width)
