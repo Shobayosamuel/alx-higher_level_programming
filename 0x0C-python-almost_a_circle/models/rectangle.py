@@ -102,6 +102,15 @@ class Rectangle(Base):
             print("")
 
     def update(self, *args, **kwargs):
+        """Update the Rectangle.
+        Args:
+            *args (ints): New attribute values.
+                - 1st argument represents id attribute
+                - 2nd argument represents size attribute
+                - 3rd argument represents x attribute
+                - 4th argument represents y attribute
+            **kwargs (dict): New key/value pairs of attributes.
+        """
         if args and len(args) != 0:
             i = 0
             for arg in args:
