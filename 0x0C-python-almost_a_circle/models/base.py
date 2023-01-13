@@ -9,6 +9,7 @@ class Base:
     Represent the base class
     """
     __nb_objects = 0
+
     def __init__(self, id=None):
         """Initialize the id
 
@@ -16,7 +17,7 @@ class Base:
             id (int, optional): id. Defaults to None.
         """
         if id is not None:
-           self.id = id
+            self.id = id
         else:
             Base.__nb_objects += 1
             self.id = Base.__nb_objects
@@ -43,16 +44,12 @@ class Base:
             return ([])
         return (json.loads(json_string))
 
-
-if __name__ == "__main__":
-    from rectangle import Rectangle
-
-    list_input = [
-        {'id': 89, 'width': 10, 'height': 4}, 
-        {'id': 7, 'width': 1, 'height': 7}
-    ]
-    json_list_input = Rectangle.to_json_string(list_input)
-    list_output = Rectangle.from_json_string(json_list_input)
-    print("[{}] {}".format(type(list_input), list_input))
-    print("[{}] {}".format(type(json_list_input), json_list_input))
-    print("[{}] {}".format(type(list_output), list_output))
+    @classmethod
+    def create(cls, **dictionary):
+        if dictionary and dictionary != {}:
+            if cls.__name__ == "Rectangle":
+                new_instance = cls(1, 1)
+            else:
+                new_instance = cls(1)
+        new_instance.update(**dictionary)
+        return (new_instance)
