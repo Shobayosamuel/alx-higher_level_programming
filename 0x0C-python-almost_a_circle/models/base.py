@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 import json
-
+import csv
 """Define a class base"""
 
 
@@ -70,6 +70,42 @@ class Base:
         try:
             with open(filename, "r") as fil:
                 list_dicts = Base.from_json_string(fil.read())
+                return [cls.create(**d) for d in list_dicts]
+        except IOError:
+            return []
+    
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        filename = cls.__name__ + ".csv"
+        with open(filename, "w", encoding="utf-8") as fil:
+            if list_objs == []:
+                fil.write("[]")
+            else:
+                if cls.__name__ == "Square":
+                    items = ["id", "size", "x", "y"]
+                else:
+                    items = ["id", "width", "height", "x", "y"]
+                csv_write = csv.DictWriter(fil, fieldnames = items)
+                for obj in list_objs:
+                    csv_write.writerow(obj.to_dictionary())
+    @classmethod
+    def load_from_file_csv(cls):
+        """Return a list of classes instantiated from a CSV file.
+        Reads from `<cls.__name__>.csv`.
+        Returns:
+            If the file does not exist - an empty list.
+            Otherwise - a list of instantiated classes.
+        """
+        filename = cls.__name__ + ".csv"
+        try:
+            with open(filename, "r", newline="") as csvfile:
+                if cls.__name__ == "Rectangle":
+                    fieldnames = ["id", "width", "height", "x", "y"]
+                else:
+                    fieldnames = ["id", "size", "x", "y"]
+                list_dicts = csv.DictReader(csvfile, fieldnames=fieldnames)
+                list_dicts = [dict([k, int(v)] for k, v in d.items())
+                              for d in list_dicts]
                 return [cls.create(**d) for d in list_dicts]
         except IOError:
             return []
