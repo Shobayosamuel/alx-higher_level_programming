@@ -73,7 +73,7 @@ class Base:
                 return [cls.create(**d) for d in list_dicts]
         except IOError:
             return []
-    
+
     @classmethod
     def save_to_file_csv(cls, list_objs):
         filename = cls.__name__ + ".csv"
@@ -85,9 +85,10 @@ class Base:
                     items = ["id", "size", "x", "y"]
                 else:
                     items = ["id", "width", "height", "x", "y"]
-                csv_write = csv.DictWriter(fil, fieldnames = items)
+                csv_write = csv.DictWriter(fil, fieldnames=items)
                 for obj in list_objs:
                     csv_write.writerow(obj.to_dictionary())
+
     @classmethod
     def load_from_file_csv(cls):
         """Return a list of classes instantiated from a CSV file.
