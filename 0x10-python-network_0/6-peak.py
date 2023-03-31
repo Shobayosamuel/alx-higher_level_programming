@@ -1,24 +1,23 @@
-#!/usr/bin/python
-"""find the peak of an unsorted array"""
+#!/usr/bin/python3
+"""task 6 modele"""
 
 
 def find_peak(list_of_integers):
-    """
-        Return the peak of the array
-    """
-    if not list_of_integers:
+    """Return a peak in a list of unsorted integers."""
+    if list_of_integers == []:
         return None
-    lists = list_of_integers
-    size = len(lists)
+
+    size = len(list_of_integers)
     if size == 1:
-        return lists[0]
+        return list_of_integers[0]
     elif size == 2:
-        return max(lists)
+        return max(list_of_integers)
+
     mid = int(size / 2)
-    peak = lists[mid]
-    if peak > lists[mid - 1] and peak > lists[mid + 1]:
+    peak = list_of_integers[mid]
+    if peak > list_of_integers[mid - 1] and peak > list_of_integers[mid + 1]:
         return peak
-    elif peak < lists[mid - 1]:
-        return find_peak(lists[:mid])
+    elif peak < list_of_integers[mid - 1]:
+        return find_peak(list_of_integers[:mid])
     else:
-        return find_peak(lists[mid + 1:])
+        return find_peak(list_of_integers[mid + 1:])
