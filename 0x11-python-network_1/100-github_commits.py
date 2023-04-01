@@ -1,7 +1,12 @@
 #!/usr/bin/python3
-
+"""
+    A python script that receives two arguments
+    from the command line and use it to fetch requests
+    to the github API and return ten mosts recent commits made
+"""
 import sys
 import requests
+
 
 if __name__ == "__main__":
     repo_name = sys.argv[1]
